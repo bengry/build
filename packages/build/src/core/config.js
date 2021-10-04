@@ -162,7 +162,6 @@ const saveUpdatedConfig = async function ({
   headersPath,
   redirectsPath,
   logs,
-  featureFlags,
   context,
   branch,
   debug,
@@ -180,7 +179,6 @@ const saveUpdatedConfig = async function ({
     context,
     branch,
     logs,
-    featureFlags,
   })
 
   await logConfigOnUpload({ logs, configPath, debug })

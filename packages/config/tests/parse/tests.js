@@ -22,19 +22,11 @@ test('Configuration file - parsing error', async (t) => {
 })
 
 test('Configuration file - ambiguous backslash in TOML', async (t) => {
-  await runFixture(t, 'parse_backslash_ambiguous', { flags: { featureFlags: { netlify_config_toml_backslash: true } } })
-})
-
-test('Configuration file - ambiguous backslash in TOML without feature flag', async (t) => {
-  await runFixture(t, 'parse_backslash_ambiguous', {
-    flags: { featureFlags: { netlify_config_toml_backslash: false } },
-  })
+  await runFixture(t, 'parse_backslash_ambiguous')
 })
 
 test('Configuration file - valid backslash in TOML', async (t) => {
-  const { returnValue } = await runFixture(t, 'parse_backslash_valid', {
-    flags: { featureFlags: { netlify_config_toml_backslash: true } },
-  })
+  const { returnValue } = await runFixture(t, 'parse_backslash_valid')
   t.true(returnValue.includes('\\\\[this\\\\]\\ntest \\" \\b \\t \\n \\f \\r \\u0000 \\u0000'))
 })
 
