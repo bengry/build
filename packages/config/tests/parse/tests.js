@@ -38,6 +38,36 @@ test('Configuration file - valid backslash in TOML', async (t) => {
   t.true(returnValue.includes('\\\\[this\\\\]\\ntest \\" \\b \\t \\n \\f \\r \\u0000 \\u0000'))
 })
 
+test('Configuration file - trailing backslashes in single quote strings in TOML', async (t) => {
+  await runFixture(t, 'parse_backslash_trailing_single', {
+    flags: { featureFlags: { netlify_config_toml_backslash: true } },
+  })
+})
+
+test('Configuration file - trailing backslashes in triple quotes strings in TOML', async (t) => {
+  await runFixture(t, 'parse_backslash_trailing_triple', {
+    flags: { featureFlags: { netlify_config_toml_backslash: true } },
+  })
+})
+
+test('Configuration file - single quote strings in TOML', async (t) => {
+  await runFixture(t, 'parse_backslash_single', {
+    flags: { featureFlags: { netlify_config_toml_backslash: true } },
+  })
+})
+
+test('Configuration file - triple single quote strings in TOML', async (t) => {
+  await runFixture(t, 'parse_backslash_single_triple', {
+    flags: { featureFlags: { netlify_config_toml_backslash: true } },
+  })
+})
+
+test('Configuration file - triple double quote strings in TOML', async (t) => {
+  await runFixture(t, 'parse_backslash_double_triple', {
+    flags: { featureFlags: { netlify_config_toml_backslash: true } },
+  })
+})
+
 test('Redirects - redirects file', async (t) => {
   await runFixture(t, 'redirects_file')
 })

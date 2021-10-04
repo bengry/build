@@ -1,2 +1,2 @@
 [build]
-ignore = "test \[this\]"
+ignore = "test \q this"
